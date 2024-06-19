@@ -13,7 +13,9 @@ def mvable(to_mv,all_pos):
 def diag_mv(b_pos, chess_size, all_pos, x_dir, y_dir):
     moves = []
     i = 1
-    while 0 < b_pos[0] + i * x_dir <= chess_size[0] and 0 < b_pos[1] + i * y_dir <= chess_size[1] and mvable([b_pos[0] + i * x_dir, b_pos[1] + i * y_dir], all_pos):
+    while 0 < b_pos[0] + i * x_dir <= chess_size[0] and \
+            0 < b_pos[1] + i * y_dir <= chess_size[1] and \
+            mvable([b_pos[0] + i * x_dir, b_pos[1] + i * y_dir], all_pos):
         b_temp = [b_pos[0] + i * x_dir, b_pos[1] + i * y_dir]
         if not mvable(b_temp,all_pos):
             break
@@ -50,7 +52,9 @@ def p_mv(p_pos,chess_size,all_pos):
 def st_mv(r_pos, chess_size, all_pos, x_dir, y_dir):
     moves = []
     i = 1
-    while 0 < r_pos[0] + i * x_dir <= chess_size[0] and 0 < r_pos[1] + i * y_dir <= chess_size[1] and mvable([r_pos[0] + i * x_dir, r_pos[1] + i * y_dir], all_pos):
+    while 0 < r_pos[0] + i * x_dir <= chess_size[0] and \
+            0 < r_pos[1] + i * y_dir <= chess_size[1] and \
+            mvable([r_pos[0] + i * x_dir, r_pos[1] + i * y_dir], all_pos):
         r_temp = [r_pos[0] + i * x_dir, r_pos[1] + i * y_dir]
         if not mvable(r_temp, all_pos):
             break
@@ -102,11 +106,18 @@ def get_pos(b_l,chess_size):
     return pos_dict
 
 def check_missing(pos_dict):
-    if not pos_dict['K'] and not pos_dict['P'] and not pos_dict['B'] and not pos_dict['R'] and not pos_dict['Q']:
+    if not pos_dict['K'] and \
+            not pos_dict['P'] and \
+            not pos_dict['B'] and \
+            not pos_dict['R'] and \
+            not pos_dict['Q']:
         return 42
     if not pos_dict['K']:
         return 1
-    if not pos_dict['P'] and not pos_dict['B'] and not pos_dict['R'] and not pos_dict['Q']:
+    if not pos_dict['P'] and \
+            not pos_dict['B'] and \
+            not pos_dict['R'] and \
+            not pos_dict['Q']:
         return 2
     if len(pos_dict['K']) > 1:
         return 3
